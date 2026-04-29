@@ -1,0 +1,5 @@
+<mat-button-toggle-group (change)="onChange($event)">
+  <mat-button-toggle *ngFor="let r of ratings" [value]="r">
+    {{ r }}★ & up
+  </mat-button-toggle>
+</mat-button-toggle-group>

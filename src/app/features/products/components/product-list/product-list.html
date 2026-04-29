@@ -1,0 +1,26 @@
+<div class="grid">
+  <mat-card *ngFor="let product of products$ | async" 
+    class="product-card" 
+    [routerLink]="['/products', product.id]">
+    <img mat-card-image [src]="product.image" alt="{{ product.name }}"/>
+
+    <mat-card-title>{{ product.name }}</mat-card-title>
+    <mat-card-subtitle>{{ product.price }}</mat-card-subtitle>
+
+    <mat-card-content>
+      <p>Category: {{ product.category }}</p>
+      <p>Rating: {{ product.rating }}</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button
+            mat-raised-button
+            color="primary"
+            (click)="add(product.id); $event.stopPropagation()"
+            >
+            Add to Cart
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<app-pagination [totalItems]="totalItems" [pageSize]="9"></app-pagination>

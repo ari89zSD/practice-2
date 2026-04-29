@@ -1,0 +1,5 @@
+<mat-selection-list (selectionChange)="onSelect($event)">
+  <mat-list-option *ngFor="let c of categories" [value]="c">
+    {{ c }}
+  </mat-list-option>
+</mat-selection-list>

@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <span class="logo">ng-shop</span>
+
+    <span class="spacer"></span>
+
+    <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search Products</mat-label>
+        <input matInput placeholder="Search..." (input)="onSearch($event.target.value)" />
+    </mat-form-field>
+
+    <span class="spacer"></span>
+
+    <button mat-icon-button routerLink="/cart">
+        <mat-icon>shopping_cart</mat-icon>
+        <span class="badge">{{ cartCount$ | async }}</span>
+    </button>
+</mat-toolbar>
+<app-navbar></app-navbar>
