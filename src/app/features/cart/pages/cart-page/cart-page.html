@@ -1,0 +1,59 @@
+<div class="cart-container" *ngIf="cart$ | async as cart">
+
+  <h1>Your Cart ({{ cartCount$ | async }} items)</h1>
+
+  <div *ngIf="cart.length === 0" class="empty">
+    <p>Your cart is empty.</p>
+    <button mat-raised-button color="primary" routerLink="/">Continue Shopping</button>
+  </div>
+
+  <div *ngIf="cart.length > 0" class="cart-items">
+
+    <div class="cart-item" *ngFor="let item of cart">
+      <img [src]="item.product?.image" class="item-image" />
+
+      <div class="item-info">
+        <h2>{{ item.product?.name }}</h2>
+        <p>Price: ${{ item.product?.price }}</p>
+
+        <div class="qty-controls">
+          <button mat-mini-button (click)="updateQty(item.productId, item.quantity - 1)" [disabled]="item.quantity <= 1">-</button>
+          <span>{{ item.quantity }}</span>
+          <button mat-mini-button (click)="updateQty(item.productId, item.quantity + 1)">+</button>
+        </div>
+
+        <button mat-button color="warn" (click)="remove(item.productId)">Remove</button>
+      </div>
+
+      <div class="item-total">
+        ${{ getSubtotal(item) | number:'1.2-2' }}
+      </div>
+    </div>
+
+    <div class="summary">
+      <h2>Order Summary</h2>
+
+      <p *ngFor="let item of cart">
+        {{ item.product?.name }} × {{ item.quantity }}
+        <span class="right">${{ getSubtotal(item) | number:'1.2-2' }}</span>
+      </p>
+
+      <hr />
+
+      <h3>
+        Total:
+        <span class="right">
+          {{
+            cart.reduce((sum, item) => sum + getSubtotal(item), 0)
+              | number:'1.2-2'
+          }}
+        </span>
+      </h3>
+
+      <button mat-raised-button color="primary" class="checkout-btn">
+        Proceed to Checkout
+      </button>
+    </div>
+
+  </div>
+</div>
