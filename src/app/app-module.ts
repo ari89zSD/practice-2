@@ -8,6 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductsModule } from './features/products/products.module';
 import { CartModule } from './features/cart/cart.module';
+import { CheckoutModule } from './features/checkout/checkout.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { CartModule } from './features/cart/cart.module';
     AppRoutingModule,
     ProductsModule,
     CartModule,
+    CheckoutModule,
     CoreModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([])

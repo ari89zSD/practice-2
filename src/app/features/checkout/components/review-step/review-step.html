@@ -1,0 +1,17 @@
+<h2>Review Your Order</h2>
+
+<h3>Shipping</h3>
+<pre>{{ shipping | json }}</pre>
+
+<h3>Payment</h3>
+<pre>{{ payment | json }}</pre>
+
+<h3>Items</h3>
+<div *ngFor="let item of cart$ | async">
+  {{ item.product?.name }} × {{ item.quantity }}
+</div>
+
+<button mat-button (click)="back.emit()">Back</button>
+<button mat-raised-button color="primary" (click)="placeOrder()">
+  Place Order
+</button>

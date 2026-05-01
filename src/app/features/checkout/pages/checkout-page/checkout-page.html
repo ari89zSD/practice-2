@@ -1,0 +1,15 @@
+<div class="checkout-container">
+
+  <h1>Checkout</h1>
+
+  <div class="steps">
+    <button [class.active]="step === 1" (click)="goTo(1)">Shipping</button>
+    <button [class.active]="step === 2" (click)="goTo(2)">Payment</button>
+    <button [class.active]="step === 3" (click)="goTo(3)">Review</button>
+  </div>
+
+  <app-shipping-step *ngIf="step === 1" (next)="goTo(2)"></app-shipping-step>
+  <app-payment-step *ngIf="step === 2" (next)="goTo(3)" (back)="goTo(1)"></app-payment-step>
+  <app-review-step *ngIf="step === 3" (back)="goTo(2)"></app-review-step>
+
+</div>

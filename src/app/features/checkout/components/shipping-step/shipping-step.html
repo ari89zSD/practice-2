@@ -1,0 +1,15 @@
+<form [formGroup]="form" class="form">
+  <h2>Shipping Information</h2>
+
+  <input formControlName="fullName" placeholder="Full Name" />
+  <input formControlName="address" placeholder="Address" />
+  <input formControlName="city" placeholder="City" />
+  <input formControlName="state" placeholder="State" />
+  <input formControlName="zip" placeholder="ZIP Code" />
+  <input formControlName="email" placeholder="Email" />
+  <input formControlName="phone" placeholder="Phone" />
+
+  <button mat-raised-button color="primary" (click)="continue()">
+    Continue to Payment
+  </button>
+</form>

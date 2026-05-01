@@ -1,0 +1,12 @@
+<form [formGroup]="form" class="form">
+  <h2>Payment Information</h2>
+
+  <input formControlName="cardNumber" placeholder="Card Number" />
+  <input formControlName="expiry" placeholder="MM/YY" />
+  <input formControlName="cvv" placeholder="CVV" />
+
+  <button mat-button (click)="back.emit()">Back</button>
+  <button mat-raised-button color="primary" (click)="continue()">
+    Review Order
+  </button>
+</form>

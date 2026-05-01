@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectCartCount, selectCartDetailed } from '../../store/cart.selectors';
 import { removeFromCart, updateQuantity } from '../../store/cart.actions';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -12,8 +13,8 @@ import { removeFromCart, updateQuantity } from '../../store/cart.actions';
 })
 export class CartPage {
 
-  cart$;
-  cartCount$;
+  cart$: Observable<any>;
+  cartCount$: Observable<number>;
 
   constructor(private store: Store) {
     this.cart$ = this.store.select(selectCartDetailed);
@@ -29,6 +30,6 @@ export class CartPage {
   }
 
   getSubtotal(item: any) {
-    return item.product.price * item.quantity;
+    return (item.product?.price ?? 0) * item.quantity;
   }
 }
